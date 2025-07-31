@@ -1,13 +1,12 @@
 {
   "name": "lovable-builder",
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "vercel-build": "echo 'Ready for deployment'"
+    "start": "node api/build.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.6",
+    "@supabase/supabase-js": "^2.39.5",
     "chrome-aws-lambda": "^10.1.0",
-    "puppeteer-core": "^10.1.0"
+    "puppeteer-core": "10.1.0"
   }
 }
