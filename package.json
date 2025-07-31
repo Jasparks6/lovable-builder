@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
-    "puppeteer": "^22.8.2"
+    "puppeteer": "^22.8.2",
+    "@supabase/supabase-js": "^2.39.5"
   }
 }
+add supabase-js dependency
