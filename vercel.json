@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "api/build.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/build",
+      "dest": "/api/build.js"
+    }
+  ]
+}
