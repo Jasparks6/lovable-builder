@@ -13,6 +13,7 @@ export default async function handler(req, res) {
     process.env.SUPABASE_SERVICE_ROLE_KEY
   );
 
+  // Fetch website_data from Supabase leads table
   const { data: lead, error: leadError } = await supabase
     .from('leads')
     .select('website_data')
@@ -24,6 +25,7 @@ export default async function handler(req, res) {
   }
 
   const websiteCopy = lead.website_data;
+
   const screenshotUrl = `https://zhsugflqgcloittbpiye.supabasecdn.com/storage/v1/object/public/screenshots/${screenshotUploadPath}/desktop.png`;
 
   const prompt = `
@@ -43,8 +45,11 @@ Rebuild the site to look 10x more modern, sleek, and professional
 Ensure the site is:
 
 SEO-optimized (especially homepage headlines and meta structure)
+
 Mobile-responsive
+
 High-converting (strong CTAs, trust elements, and optimized layout)
+
 Built specifically to generate and qualify leads with an in-depth AI powered quote calculator.
 
 🖥️ PAGE STRUCTURE & DESIGN ELEMENTS
@@ -89,7 +94,7 @@ Text:
 
 Button:
 “Buy Now” → Forward to this link:
-https://www.vynyrd.com/checkout?name=${encodeURIComponent(companyName)}&business_name=${encodeURIComponent(companyName)}&image_url=${encodeURIComponent(screenshotUrl)}
+https://www.vynyrd.com/checkout?name=${companyName}&business_name=${companyName}&image_url=${encodeURIComponent(screenshotUrl)}
 
 ✅ ADDITIONAL NOTES
 Use subtle animations for smooth transitions (e.g., fade-ins, hover effects)
@@ -117,7 +122,6 @@ Be creative, clean, and modern—but keep it simple and accessible
     });
 
     await page.goto('https://app.lovable.dev/new', { waitUntil: 'networkidle2' });
-
     await page.waitForSelector('textarea');
     await page.type('textarea', prompt);
 
@@ -130,15 +134,12 @@ Be creative, clean, and modern—but keep it simple and accessible
     const iframe = await page.$('iframe');
     const frame = await iframe.contentFrame();
 
-    // Desktop screenshot
     await frame.setViewport({ width: 1280, height: 800 });
     const desktopScreenshot = await frame.screenshot({ fullPage: true });
 
-    // Mobile screenshot
     await frame.setViewport({ width: 390, height: 844, isMobile: true });
     const mobileScreenshot = await frame.screenshot({ fullPage: true });
 
-    // Upload both
     const basePath = `${screenshotUploadPath}/${companyName}`;
     const upload = async (name, buffer) => {
       const { error } = await supabase.storage
