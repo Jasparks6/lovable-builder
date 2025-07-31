@@ -4,7 +4,7 @@
   "type": "module",
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",
-    "puppeteer-core": "^22.8.2",
+    "puppeteer-core": "^10.1.0",
     "@supabase/supabase-js": "^2.39.5"
   }
 }
