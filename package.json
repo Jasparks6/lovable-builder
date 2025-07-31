@@ -2,12 +2,12 @@
   "name": "lovable-builder",
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "vercel-build": "npm install && node api/build.js"
-  },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.6",
+    "puppeteer-core": "^22.8.2",
     "chrome-aws-lambda": "^10.1.0",
-    "puppeteer-core": "^22.8.2"
+    "@supabase/supabase-js": "^2.39.7"
+  },
+  "scripts": {
+    "vercel-build": "echo 'Skipping build step...'"
   }
 }
