@@ -2,9 +2,9 @@
   "name": "lovable-builder",
   "version": "1.0.0",
   "type": "module",
-  "dependencies": {
-    "puppeteer": "^22.8.2",
-    "@supabase/supabase-js": "^2.39.5"
+  "chrome-aws-lambda": "^10.1.0",
+  "puppeteer-core": "^22.8.2",
+  "@supabase/supabase-js": "^2.39.5"
   }
 }
 
